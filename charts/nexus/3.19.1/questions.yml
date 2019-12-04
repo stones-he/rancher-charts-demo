@@ -1,0 +1,48 @@
+categories:
+- Store
+- Maven
+questions:
+- variable: defaultImage
+  default: "true"
+  description: "Use default Docker images"
+  label: Use Default Images
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image
+    default: "nexus3"
+    description: "Docker image name"
+    type: string
+    label: Image Name
+  - variable: imageTag
+    default: "1.1"
+    description: "Docker image tag"
+    type: string
+    label: Image Tag
+- variable: service.port
+  default: "8081"
+  description: "Service port for access to Nexus"
+  type: string
+  label: Nexus NodePort number
+  required: true
+  group: "Nexus Settings"
+- variable: service.type
+  default: "ClusterIP"
+  description: "Nexus K8s Service type"
+  type: enum
+  group: "Services and Load Balancing"
+  options:
+    - "ClusterIP"
+    - "NodePort"
+  required: true
+  label: Nexus Service Type
+  show_subquestion_if: "NodePort"
+  subquestions:
+  - variable: service.nodePort
+    default: ""
+    description: "NodePort port number(to set explicitly, choose port between 30000-32767)"
+    type: int
+    min: 30000
+    max: 32767
+    label: Service NodePort number

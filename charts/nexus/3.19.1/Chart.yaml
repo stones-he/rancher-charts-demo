@@ -1,0 +1,15 @@
+name: nexus
+version: 0.0.1
+appVersion: 3.19.1
+description: nexus stores 3x.x system.
+keywords:
+- nexus
+- maven
+home: https://www.sonatype.com/
+icon: http://192.168.56.234:8081/static/rapture/resources/icons/x32/nexus-white.png?_v=3.19.1-01&_e=OSS
+sources:
+- https://github.com/stones-he/rancher-charts-demo
+maintainers:
+- name: stones_he
+  email: stones_he@163.com
+engine: gotpl
