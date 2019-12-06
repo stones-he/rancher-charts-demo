@@ -9,9 +9,9 @@ metadata:
 #   heritage: "{{ .Release.Service }}"
 spec:
   template:
-    metadata:
-      labels:
-        app: {{ template "nexus.fullname" . }}
+    # metadata:
+    #   labels:
+    #     app: {{ template "nexus.fullname" . }}
     spec:
      {{- if .Values.nodeSelector }}
       nodeSelector:
