@@ -13,8 +13,7 @@ spec:
       labels:
         app: nexus
     spec:
-      nodeSelector:
-        nexus
+      nodeSelector: nexus
     {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
