@@ -2,21 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "nexus.fullname" . }}
-# labels:
-#   app: {{ template "nexus.fullname" . }}
-#   chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-#   release: "{{ .Release.Name }}"
-#   heritage: "{{ .Release.Service }}"
+  labels:
+    app: nexus
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
   template:
-    # metadata:
-    #   labels:
-    #     app: {{ template "nexus.fullname" . }}
+    metadata:
+      labels:
+        app: nexus
     spec:
-     {{- if .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-      {{- end }}
+        nexus
     {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
