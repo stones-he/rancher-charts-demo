@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: nexus
-          image: {{ .Values.image.registry }}/nexus:{{ .Values.image.tag }}
+          image: {{ .Values.image.registry }}/nexus3:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 8081
