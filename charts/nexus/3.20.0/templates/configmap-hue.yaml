@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nexus-config
+data:
+  nexus-ini: |
+    [desktop]
+    [notebook]
+    [[interpreters]]
+    {{ .Values.nexus.interpreters | indent 4 }}

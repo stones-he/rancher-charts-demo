@@ -1,0 +1,77 @@
+{{- if .Values.balancer.enable -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nexus: |
+    server {
+        server_name nexus;
+        charset utf-8;
+
+        listen 80;
+
+        # Or if running nexus on https://
+        ## listen 8001 ssl;
+        ## ssl_certificate /path/to/ssl/cert;
+        ## ssl_certificate_key /path/to/ssl/key;
+
+        location / {
+            proxy_pass http://nexus;
+
+            # Or if the upstream nexus instances are running behind https://
+            ## proxy_pass https://nexus;
+        }
+
+    }
+
+    upstream nexus {
+        ip_hash;
+
+        # List all the nexus instances here for high availability.
+        server nexus:8081 max_fails=3;
+        #server NEXUS_HOST2:8888 max_fails=3;
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: {{ .Values.registry }}/nginx:{{ .Values.tag }}
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: nginx-config
+            mountPath: /etc/nginx/sites-available/nexus
+            subPath: nexus
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexus-balancer
+spec:
+  type: NodePort
+  # type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+{{- end -}}

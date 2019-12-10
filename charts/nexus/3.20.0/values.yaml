@@ -1,0 +1,9 @@
+image:
+  registry: "nexus3"
+  tag: "1.1"
+  pullPolicy: "IfNotPresent"
+nexus:
+  replicas: 1
+balancer:
+  enabled: true
+
