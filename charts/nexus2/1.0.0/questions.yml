@@ -63,7 +63,7 @@ questions:
 
 - variable: serviceType
   default: "NodePort"
-  description: "WordPress Service type"
+  description: "App Service type"
   type: enum
   show_if: "ingress.enabled=false"
   options:
@@ -71,7 +71,7 @@ questions:
     - "NodePort"
     - "LoadBalancer"
   required: true
-  label: WordPress Service Type
+  label: App Service Type
   show_subquestion_if: "NodePort"
   group: "Services and Load Balancing"
   subquestions:
