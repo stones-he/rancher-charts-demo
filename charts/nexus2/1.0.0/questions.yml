@@ -32,3 +32,8 @@ questions:
   description: "IMPORTANT: Granting admin privileges to Dashboard's Service Account might be a security risk, makeing sure that you know what you are doing before proceeding."
   type: boolean
   label: "Enable Dashboard Cluster Admin Role (NOT RECOMMENDED)"
+- variable: spec.replicaCount
+  default: 1
+  description: "Replica Number"
+  type: int
+  label: "Replica Number"
