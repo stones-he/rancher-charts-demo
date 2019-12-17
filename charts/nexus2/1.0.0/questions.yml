@@ -37,14 +37,25 @@ questions:
   description: "Replica Number"
   type: int
   label: "Replica Number"
-- variable: ingress.paths[0].name
-  default: ""
-  description: "Service Context Path"
-  type: list
-  label: "Service Context Path"
-- variable: ingress.hosts[0].name
-  default: "chart-example.local"
-  description: "Ingress Host Name"
-  type: hostname
-  label: "Host Name"
+
+- variable: ingress.enabled
+  default: true
+  description: "Expose app using Layer 7 Load Balancer - ingress"
+  type: boolean
+  label: Expose app using Layer 7 Load Balancer
+  show_subquestion_if: true
+  group: "Services and Load Balancing"
+  subquestions:
+  - variable: ingress.hosts[0]
+    default: "xip.io"
+    description: "Ingress Host Name"
+    type: hostname
+    required: true
+    label: Hostname
+  - variable: ingress.paths[0]
+    default: ""
+    description: "Service Context Path"
+    type: multiline
+    label: "Service Context Path"
+
   
