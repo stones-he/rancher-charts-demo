@@ -45,6 +45,6 @@ questions:
 - variable: ingress.hosts
   default: "chart-example.local"
   description: "Ingress Host Name"
-  type: string
+  type: list
   label: "Host Name"
   
