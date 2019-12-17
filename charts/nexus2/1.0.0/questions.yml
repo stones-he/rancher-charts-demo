@@ -26,17 +26,20 @@ questions:
   description: "Enable possibility to skip login"
   type: boolean
   label: "Enable Possibility To Skip Login"
+  group: "Others"
 - variable: rbac.clusterAdminRole
   required: true
   default: false
   description: "IMPORTANT: Granting admin privileges to Dashboard's Service Account might be a security risk, makeing sure that you know what you are doing before proceeding."
   type: boolean
   label: "Enable Dashboard Cluster Admin Role (NOT RECOMMENDED)"
-- variable: spec.replicaCount
+  group: "Others"
+- variable: replicaCount
   default: 1
   description: "Replica Number"
   type: int
   label: "Replica Number"
+  group: "Others"
 
 - variable: ingress.enabled
   default: true
