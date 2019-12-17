@@ -72,7 +72,7 @@ questions:
     - "LoadBalancer"
   required: true
   label: App Service Type
-  show_subquestion_if: "NodePort"
+  show_subquestion_if: "ClusterIP"
   group: "Services and Load Balancing"
   subquestions:
   - variable: nodePorts.http
