@@ -55,7 +55,7 @@ questions:
   - variable: ingress.paths[0]
     default: ""
     description: "Service Context Path"
-    type: multiline
+    type: string
     label: "Service Context Path"
 
   
