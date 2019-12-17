@@ -62,7 +62,7 @@ questions:
     label: "Service Context Path"
 
 - variable: serviceType
-  default: "NodePort"
+  default: "ClusterIP"
   description: "App Service type"
   type: enum
   show_if: "ingress.enabled=false"
@@ -81,7 +81,7 @@ questions:
     type: int
     min: 30000
     max: 32767
-    show_if: "ingress.enabled=false&&serviceType=LoadBalancer"
+    show_if: "ingress.enabled=false&&serviceType=ClusterIP"
     label: NodePort Http Port
   - variable: nodePorts.https
     default: ""
