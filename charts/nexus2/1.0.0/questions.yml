@@ -37,3 +37,14 @@ questions:
   description: "Replica Number"
   type: int
   label: "Replica Number"
+- variable: ingress.paths
+  default: ""
+  description: "Service Context Path"
+  type: list
+  label: "Service Context Path"
+- variable: ingress.hosts
+  default: "chart-example.local"
+  description: "Ingress Host Name"
+  type: string
+  label: "Host Name"
+  
