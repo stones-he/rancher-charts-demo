@@ -81,7 +81,7 @@ questions:
     type: int
     min: 30000
     max: 32767
-    show_if: "ingress.enabled=false&&serviceType=ClusterIP"
+    show_if: "ingress.enabled=false&&serviceType=NodePort"
     label: NodePort Http Port
   - variable: nodePorts.https
     default: ""
